@@ -11,15 +11,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private Button num_1,num_2,num_3,num_4,num_5,num_6,num_7,num_8,num_9,num_0,num_add,num_min,num_mul,num_div,num_eq,num_C;
     private String number_1,number_2,number_3,number_4,number_5,number_6,number_7,number_8,number_9,number_0,number_add,number_min,number_mul,number_div,number_eq,number_C;
     private TextView numres;
-    private long numint1 = 0;
+    private long numbox = 0;
     private long numint2 = 0;
     private boolean checker = false;
-    private int Farithmetic = 0;
+    private int arithmetic = 0;
     private long numrem = 0;
+    private int arrayCounter = 0;
+    private ArrayList<Integer> numInt = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         numres = findViewById(R.id.numLabel);
-        numres.setText(String.valueOf(numint1));
+        numres.setText(String.valueOf(numbox));
 
         num_1 = findViewById(R.id.numBtn1);
         num_2 = findViewById(R.id.numBtn2);
@@ -89,18 +93,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         number_C = "C";
     }
 
-    /*ここにクラス作成予定
-    class{
-        if(Farithmetic == 1){
-            numres.setText(String.valueOf(numint1+"+"+numint2));
-        } else if (Farithmetic == 2) {
-            numres.setText(String.valueOf(numint1+"-"+numint2));
-        } else if (Farithmetic == 3) {
-            numres.setText(String.valueOf(numint1+"*"+numint2));
+    //ここにクラス作成予定
+    /*
+    public class calculation{
+        if(arithmetic == 1){
+            numres.setText(String.valueOf(numbox+"+"+numint2));
+        } else if (arithmetic == 2) {
+            numres.setText(String.valueOf(numbox+"-"+numint2));
+        } else if (arithmetic == 3) {
+            numres.setText(String.valueOf(numbox+"*"+numint2));
         }else {
-            numres.setText(String.valueOf(numint1+"/"+numint2));
+            numres.setText(String.valueOf(numbox+"/"+numint2));
         }
-    }*/
+    }
+    */
 
     @Override
     public void onClick(View v) {
@@ -108,194 +114,196 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String btnText = numBtn.getText().toString();
         if (btnText.equals(number_1)){
             if (checker ==false){
-                numint1 = numint1*10+1;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+1;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+1;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_2)) {
             if (checker ==false){
-                numint1 = numint1*10+2;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+2;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+2;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_3)) {
             if (checker ==false){
-                numint1 = numint1*10+3;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+3;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+3;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_4)) {
             if (checker ==false){
-                numint1 = numint1*10+4;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+4;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+4;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_5)) {
             if (checker ==false){
-                numint1 = numint1*10+5;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+5;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+5;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_6)) {
             if (checker ==false){
-                numint1 = numint1*10+6;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+6;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+6;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_7)) {
             if (checker ==false){
-                numint1 = numint1*10+7;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+7;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+7;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_8)) {
             if (checker ==false){
-                numint1 = numint1*10+8;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+8;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+8;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_9)) {
             if (checker ==false){
-                numint1 = numint1*10+9;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10+9;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10+9;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_0)) {
             if (checker ==false){
-                numint1 = numint1*10;
-                numres.setText(String.valueOf(numint1));
+                numbox = numbox*10;
+                numres.setText(String.valueOf(numbox));
             }else {
                 numint2 = numint2*10;
-                if(Farithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (Farithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (Farithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
+                if(arithmetic == 1){
+                    numres.setText(String.valueOf(numbox+"+"+numint2));
+                } else if (arithmetic == 2) {
+                    numres.setText(String.valueOf(numbox+"-"+numint2));
+                } else if (arithmetic == 3) {
+                    numres.setText(String.valueOf(numbox+"*"+numint2));
                 }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                    numres.setText(String.valueOf(numbox+"/"+numint2));
                 }
             }
         } else if (btnText.equals(number_add)) {
             checker = true;
-            Farithmetic = 1;
-            numres.setText(String.valueOf(numint1)+"+");
+            arithmetic = 1;
+            numInt.add((int) numbox);
+            numres.setText(String.valueOf(numInt.get(arrayCounter))+"+");
+            arrayCounter++;
         } else if (btnText.equals(number_min)) {
             checker = true;
-            Farithmetic = 2;
-            numres.setText(String.valueOf(numint1)+"-");
+            arithmetic = 2;
+            numres.setText(String.valueOf(numbox)+"-");
         } else if (btnText.equals(number_mul)) {
             checker = true;
-            Farithmetic = 3;
-            numres.setText(String.valueOf(numint1)+"*");
+            arithmetic = 3;
+            numres.setText(String.valueOf(numbox)+"*");
         } else if (btnText.equals(number_div)) {
             checker = true;
-            Farithmetic = 4;
-            numres.setText(String.valueOf(numint1)+"/");
+            arithmetic = 4;
+            numres.setText(String.valueOf(numbox)+"/");
         } else if (btnText.equals(number_eq)) {
-            if(Farithmetic == 1){
-                numint1 += numint2;
-                numres.setText(String.valueOf(numint1));
+            if(arithmetic == 1){
+                numbox += numint2;
+                numres.setText(String.valueOf(numbox));
                 numint2 = 0;
                 checker = false;
-            } else if (Farithmetic == 2) {
-                numint1 -= numint2;
-                numres.setText(String.valueOf(numint1));
+            } else if (arithmetic == 2) {
+                numbox -= numint2;
+                numres.setText(String.valueOf(numbox));
                 numint2 = 0;
                 checker = false;
-            } else if (Farithmetic == 3) {
-                numint1 *= numint2;
-                numres.setText(String.valueOf(numint1));
+            } else if (arithmetic == 3) {
+                numbox *= numint2;
+                numres.setText(String.valueOf(numbox));
                 numint2 = 0;
                 checker = false;
             }else {
@@ -304,22 +312,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     numint2 = 0;
                     checker = false;
                 }else {
-                    numrem = numint1%numint2;
-                    numint1 /= numint2;
+                    numrem = numbox%numint2;
+                    numbox /= numint2;
                     if (numrem == 0){
-                        numres.setText(String.valueOf(numint1));
+                        numres.setText(String.valueOf(numbox));
                     }else {
-                        numres.setText(String.valueOf(numint1)+"…"+numrem);
+                        numres.setText(String.valueOf(numbox)+"…"+numrem);
                     }
                     numint2 = 0;
                     checker = false;
                 }
             }
         } else if (btnText.equals(number_C)) {
-            numint1 = 0;
+            numbox = 0;
             numint2 = 0;
             checker = false;
-            numres.setText(String.valueOf(numint1));
+            numres.setText(String.valueOf(numbox));
         }
     }
 }
