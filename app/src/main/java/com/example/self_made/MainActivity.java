@@ -1,5 +1,6 @@
 package com.example.self_made;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -11,14 +12,37 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import java.text.DecimalFormat;
+
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private Button num_1,num_2,num_3,num_4,num_5,num_6,num_7,num_8,num_9,num_0,num_add,num_min,num_mul,num_div,num_eq,num_C;
-    private String number_1,number_2,number_3,number_4,number_5,number_6,number_7,number_8,number_9,number_0,number_add,number_min,number_mul,number_div,number_eq,number_C;
+    private final String number_add = "+";
+    private final String number_min = "-";
+    private final String number_mul = "*";
+    private final String number_div = "/";
+    //テキスト出力
     private TextView numres;
-    private double numint1 = 0;
-    private double numint2 = 0;
+    //計算式第一項
+    private double numDoub1 = 0;
+    //計算式第二項
+    private double numDoub2 = 0;
+    //計算式の項判定
     private boolean checker = false;
+
+    //四則演算判定
     private int arithmetic = 0;
+    private final int arithmetic_plu =1;
+    private final int arithmetic_min =2;
+    private final int arithmetic_mul =3;
+    private final int arithmetic_div =4;
+
+    private boolean isNumber = false;
+
+    DecimalFormat df = new DecimalFormat("0.################");
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,24 +55,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         numres = findViewById(R.id.numLabel);
-        numres.setText(String.valueOf(numint1));
+        numres.setText(df.format(numDoub1));
 
-        num_1 = findViewById(R.id.numBtn1);
-        num_2 = findViewById(R.id.numBtn2);
-        num_3 = findViewById(R.id.numBtn3);
-        num_4 = findViewById(R.id.numBtn4);
-        num_5 = findViewById(R.id.numBtn5);
-        num_6 = findViewById(R.id.numBtn6);
-        num_7 = findViewById(R.id.numBtn7);
-        num_8 = findViewById(R.id.numBtn8);
-        num_9 = findViewById(R.id.numBtn9);
-        num_0 = findViewById(R.id.numBtn0);
-        num_add = findViewById(R.id.numBtnadd);
-        num_min = findViewById(R.id.numBtnmin);
-        num_mul = findViewById(R.id.numBtnmul);
-        num_div = findViewById(R.id.numBtndiv);
-        num_eq = findViewById(R.id.numBtneq);
-        num_C = findViewById(R.id.numBtnC);
+        Button num_1 = findViewById(R.id.numBtn1);
+        Button num_2 = findViewById(R.id.numBtn2);
+        Button num_3 = findViewById(R.id.numBtn3);
+        Button num_4 = findViewById(R.id.numBtn4);
+        Button num_5 = findViewById(R.id.numBtn5);
+        Button num_6 = findViewById(R.id.numBtn6);
+        Button num_7 = findViewById(R.id.numBtn7);
+        Button num_8 = findViewById(R.id.numBtn8);
+        Button num_9 = findViewById(R.id.numBtn9);
+        Button num_0 = findViewById(R.id.numBtn0);
+        Button num_add = findViewById(R.id.numBtnadd);
+        Button num_min = findViewById(R.id.numBtnmin);
+        Button num_mul = findViewById(R.id.numBtnmul);
+        Button num_div = findViewById(R.id.numBtndiv);
+        Button num_eq = findViewById(R.id.numBtneq);
+        Button num_C = findViewById(R.id.numBtnC);
 
         num_1.setOnClickListener(this);
         num_2.setOnClickListener(this);
@@ -66,260 +90,364 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         num_div.setOnClickListener(this);
         num_eq.setOnClickListener(this);
         num_C.setOnClickListener(this);
-
-        numberChecker();
-    }
-    private void numberChecker(){
-        number_1 = "1";
-        number_2 = "2";
-        number_3 = "3";
-        number_4 = "4";
-        number_5 = "5";
-        number_6 = "6";
-        number_7 = "7";
-        number_8 = "8";
-        number_9 = "9";
-        number_0 = "0";
-        number_add = "+";
-        number_min = "-";
-        number_mul = "*";
-        number_div = "/";
-        number_eq = "=";
-        number_C = "C";
     }
 
-    /*ここにクラス作成予定
-    class{
-        if(arithmetic == 1){
-            numres.setText(String.valueOf(numint1+"+"+numint2));
-        } else if (arithmetic == 2) {
-            numres.setText(String.valueOf(numint1+"-"+numint2));
-        } else if (arithmetic == 3) {
-            numres.setText(String.valueOf(numint1+"*"+numint2));
-        }else {
-            numres.setText(String.valueOf(numint1+"/"+numint2));
-        }
-    }*/
-
+    @SuppressLint("SetTextI18n")
     @Override
     public void onClick(View v) {
         Button numBtn = findViewById(v.getId());
         String btnText = numBtn.getText().toString();
+
+        //ボタン押下時に出力されるString型
+        String number_1 = "1";
+        String number_2 = "2";
+        String number_3 = "3";
+        String number_4 = "4";
+        String number_5 = "5";
+        String number_6 = "6";
+        String number_7 = "7";
+        String number_8 = "8";
+        String number_9 = "9";
+        String number_0 = "0";
+        String number_eq = "=";
+        String number_C = "C";
         if (btnText.equals(number_1)){
-            if (checker ==false){
-                numint1 = numint1*10+1;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+1;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+1;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+1;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
         } else if (btnText.equals(number_2)) {
-            if (checker ==false){
-                numint1 = numint1*10+2;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+2;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+2;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+2;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
+
         } else if (btnText.equals(number_3)) {
-            if (checker ==false){
-                numint1 = numint1*10+3;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+3;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+3;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+3;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
+
         } else if (btnText.equals(number_4)) {
-            if (checker ==false){
-                numint1 = numint1*10+4;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+4;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+4;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+4;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
+
         } else if (btnText.equals(number_5)) {
-            if (checker ==false){
-                numint1 = numint1*10+5;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+5;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+5;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+5;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
+
         } else if (btnText.equals(number_6)) {
-            if (checker ==false){
-                numint1 = numint1*10+6;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+6;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+6;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+6;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
+
         } else if (btnText.equals(number_7)) {
-            if (checker ==false){
-                numint1 = numint1*10+7;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+7;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+7;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+7;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
+
         } else if (btnText.equals(number_8)) {
-            if (checker ==false){
-                numint1 = numint1*10+8;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+8;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+8;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+8;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
+
         } else if (btnText.equals(number_9)) {
-            if (checker ==false){
-                numint1 = numint1*10+9;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+9;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10+9;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
-                }
+                numDoub2 = numDoub2 *10+9;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
+            isNum(true);
         } else if (btnText.equals(number_0)) {
-            if (checker ==false){
-                numint1 = numint1*10;
-                numres.setText(String.valueOf(numint1));
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10;
+                numres.setText(df.format(numDoub1));
             }else {
-                numint2 = numint2*10;
-                if(arithmetic == 1){
-                    numres.setText(String.valueOf(numint1+"+"+numint2));
-                } else if (arithmetic == 2) {
-                    numres.setText(String.valueOf(numint1+"-"+numint2));
-                } else if (arithmetic == 3) {
-                    numres.setText(String.valueOf(numint1+"*"+numint2));
-                }else {
-                    numres.setText(String.valueOf(numint1+"/"+numint2));
+                numDoub2 = numDoub2 *10;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
+            }
+            isNum(true);
+
+        } else if (btnText.equals(number_add)) {
+            if (!isNumber()) {
+                arithCheck(arithmetic_plu);
+            } else {
+                if (!checker) {
+                    checker = true;
+                    arithmetic = 1;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "+");
+                } else {
+                    if (arithmetic == 1) {
+                        numDoub1 += numDoub2;
+                    } else if (arithmetic == 2) {
+                        numDoub1 -= numDoub2;
+                    } else if (arithmetic == 3) {
+                        numDoub1 *= numDoub2;
+                    } else if (arithmetic == 4) {
+                        if (numDoub2 == 0) {
+                            numres.setText("Error");
+                            numDoub1 = 0;
+                            numDoub2 = 0;
+                            checker = false;
+                            arithmetic = 0;
+                        } else {
+                            numDoub1 /= numDoub2;
+                        }
+                    }
+                    arithmetic = 1;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "+");
                 }
             }
-        } else if (btnText.equals(number_add)) {
-            checker = true;
-            arithmetic = 1;
-            numres.setText(String.valueOf(numint1)+"+");
+            isNum(false);
         } else if (btnText.equals(number_min)) {
-            checker = true;
-            arithmetic = 2;
-            numres.setText(String.valueOf(numint1)+"-");
+            if (!isNumber()) {
+                arithCheck(arithmetic_min);
+            } else {
+                if (!checker) {
+                    checker = true;
+                    arithmetic = 2;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "-");
+                } else {
+                    if (arithmetic == 1) {
+                        numDoub1 += numDoub2;
+                    } else if (arithmetic == 2) {
+                        numDoub1 -= numDoub2;
+                    } else if (arithmetic == 3) {
+                        numDoub1 *= numDoub2;
+                    } else if (arithmetic == 4) {
+                        if (numDoub2 == 0) {
+                            numres.setText("Error");
+                            numDoub1 = 0;
+                            numDoub2 = 0;
+                            checker = false;
+                            arithmetic = 0;
+                        } else {
+                            numDoub1 /= numDoub2;
+                        }
+                    }
+                    arithmetic = 2;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "-");
+                }
+            }
+            isNum(false);
+
         } else if (btnText.equals(number_mul)) {
-            checker = true;
-            arithmetic = 3;
-            numres.setText(String.valueOf(numint1)+"*");
+            if (!isNumber()) {
+                arithmetic = 3;
+                arithCheck(arithmetic_mul);
+            } else {
+                if (!checker) {
+                    checker = true;
+                    arithmetic = 3;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "*");
+                } else {
+                    if (arithmetic == 1) {
+                        numDoub1 += numDoub2;
+                    } else if (arithmetic == 2) {
+                        numDoub1 -= numDoub2;
+                    } else if (arithmetic == 3) {
+                        numDoub1 *= numDoub2;
+                    } else if (arithmetic == 4) {
+                        if (numDoub2 == 0) {
+                            numres.setText("Error");
+                            numDoub1 = 0;
+                            numDoub2 = 0;
+                            checker = false;
+                            arithmetic = 0;
+                        } else {
+                            numDoub1 /= numDoub2;
+                        }
+                    }
+                    arithmetic = 3;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "*");
+                }
+            }
+            isNum(false);
+
         } else if (btnText.equals(number_div)) {
-            checker = true;
-            arithmetic = 4;
-            numres.setText(String.valueOf(numint1)+"/");
+            if (!isNumber()) {
+                arithCheck(arithmetic_div);
+            } else {
+                if (!checker) {
+                    checker = true;
+                    arithmetic = 4;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "/");
+                } else {
+                    if (arithmetic == 1) {
+                        numDoub1 += numDoub2;
+                    } else if (arithmetic == 2) {
+                        numDoub1 -= numDoub2;
+                    } else if (arithmetic == 3) {
+                        numDoub1 *= numDoub2;
+                    } else if (arithmetic == 4) {
+                        if (numDoub2 == 0) {
+                            numres.setText("Error");
+                            numDoub1 = 0;
+                            numDoub2 = 0;
+                            checker = false;
+                            arithmetic = 0;
+                        } else {
+                            numDoub1 /= numDoub2;
+                        }
+                    }
+                    arithmetic = 4;
+                    numDoub2 = 0;
+                    numres.setText(df.format(numDoub1) + "/");
+                }
+            }
+            isNum(false);
+
         } else if (btnText.equals(number_eq)) {
             if(arithmetic == 1){
-                numint1 += numint2;
-                numres.setText(String.valueOf(numint1));
-                numint2 = 0;
+                numDoub1 += numDoub2;
+                numres.setText(df.format(numDoub1));
+                numDoub2 = 0;
             } else if (arithmetic == 2) {
-                numint1 -= numint2;
-                numres.setText(String.valueOf(numint1));
-                numint2 = 0;
+                numDoub1 -= numDoub2;
+                numres.setText(df.format(numDoub1));
+                numDoub2 = 0;
             } else if (arithmetic == 3) {
-                numint1 *= numint2;
-                numres.setText(String.valueOf(numint1));
-                numint2 = 0;
-            }else {
-                if (numint2 == 0){
+                numDoub1 *= numDoub2;
+                numres.setText(df.format(numDoub1));
+                numDoub2 = 0;
+            }else if (arithmetic ==4){
+                if (numDoub2 == 0){
                     numres.setText("Error");
-                    numint2 = 0;
+                    numDoub1 = 0;
+                    numDoub2 = 0;
                     checker = false;
+                    arithmetic = 0;
                 }else {
-                    //numrem = numint1%numint2;
-                    numint1 /= numint2;
-                    numres.setText(String.valueOf(numint1));
-                    numint2 = 0;
-                    /*
-                    if (numrem == 0){
-                        numres.setText(String.valueOf(numint1));
-                        numint2 = 0;
-                    }else {
-                        numres.setText(String.valueOf(numint1)+"…"+numrem);
-                        numint2 = 0;
-                    }
-                     */
+                    numDoub1 /= numDoub2;
+                    numres.setText(df.format(numDoub1));
+                    numDoub2 = 0;
                 }
+            }else {
+                numres.setText(df.format(numDoub1));
+                numDoub2 = 0;
             }
+            arithmetic = 0;
+            isNum(false);
+
         } else if (btnText.equals(number_C)) {
-            numint1 = 0;
-            numint2 = 0;
+            numDoub1 = 0;
+            numDoub2 = 0;
             checker = false;
-            numres.setText(String.valueOf(numint1));
+            arithmetic = 0;
+            numres.setText(df.format(numDoub1));
+            isNum(false);
+
         }
+    }
+
+    // 数値の場合
+    private void isNum(boolean bool) {
+        isNumber = bool;
+    }
+
+    private boolean isNumber() {
+        return isNumber;
+    }
+
+    // 四則演算子のみ更新する
+
+    @SuppressLint("SetTextI18n")
+    private void arithCheck(int a){
+        String arithStr = "";
+        if (a == arithmetic_plu){
+            arithStr = number_add;
+        } else if (a == arithmetic_min) {
+            arithStr = number_min;
+        } else if (a == arithmetic_mul) {
+            arithStr = number_mul;
+        } else if (a == arithmetic_div) {
+            arithStr = number_div;
+        }
+        arithmetic = a;
+        numres.setText(numDoub1 + arithStr);
+        checker = true;
+    }
+
+
+    private String connectSolution(String numStr1, String numStr2) {
+        String connectStr = "";
+        if(arithmetic == 1){//四則演算判定
+            connectStr = number_add;
+        } else if (arithmetic == 2) {
+            connectStr = number_min;
+        } else if (arithmetic == 3) {
+            connectStr = number_mul;
+        }else if (arithmetic == 4){
+            connectStr = number_div;
+        }
+        return numStr1 + connectStr + numStr2;
     }
 }
