@@ -30,11 +30,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     //四則演算判定
     private int arithmetic = 0;
-    private final int arithmetic_plu =1;
+    private final int arithmetic_add =1;
     private final int arithmetic_min =2;
     private final int arithmetic_mul =3;
     private final int arithmetic_div =4;
-
+    private boolean firstInput = false;
     private boolean isNumber = false;
 
     DecimalFormat df = new DecimalFormat("0.################");
@@ -112,126 +112,136 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String number_eq = "=";
         String number_C = "C";
         if (btnText.equals(number_1)){
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+1;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+1;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+1;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+1;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(1);
             isNum(true);
         } else if (btnText.equals(number_2)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+2;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+2;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+2;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+2;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(2);
             isNum(true);
 
         } else if (btnText.equals(number_3)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+3;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+3;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+3;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+3;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(3);
             isNum(true);
 
         } else if (btnText.equals(number_4)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+4;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+4;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+4;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+4;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(4);
             isNum(true);
 
         } else if (btnText.equals(number_5)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+5;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+5;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+5;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+5;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(5);
             isNum(true);
 
         } else if (btnText.equals(number_6)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+6;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+6;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+6;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+6;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(6);
             isNum(true);
 
         } else if (btnText.equals(number_7)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+7;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+7;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+7;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+7;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(7);
             isNum(true);
 
         } else if (btnText.equals(number_8)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+8;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+8;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+8;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+8;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(8);
             isNum(true);
 
         } else if (btnText.equals(number_9)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10+9;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10+9;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10+9;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10+9;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(9);
             isNum(true);
         } else if (btnText.equals(number_0)) {
-            if (!checker){//項の判定
-                numDoub1 = numDoub1 *10;
-                numres.setText(df.format(numDoub1));
-            }else {
-                numDoub2 = numDoub2 *10;
-                String numStr1 = df.format(numDoub1);
-                String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
-            }
+//            if (!checker){//項の判定
+//                numDoub1 = numDoub1 *10;
+//                numres.setText(df.format(numDoub1));
+//            }else {
+//                numDoub2 = numDoub2 *10;
+//                String numStr1 = df.format(numDoub1);
+//                String numStr2 = df.format(numDoub2);
+//                numres.setText(connectSolution(numStr1, numStr2));
+//            }
+            numberButton(0);
             isNum(true);
 
         } else if (btnText.equals(number_add)) {
             if (!isNumber()) {
-                arithCheck(arithmetic_plu);
+                arithCheck(arithmetic_add);
             } else {
                 if (!checker) {
                     checker = true;
@@ -426,7 +436,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @SuppressLint("SetTextI18n")
     private void arithCheck(int a){
         String arithStr = "";
-        if (a == arithmetic_plu){
+        if (a == arithmetic_add){
             arithStr = number_add;
         } else if (a == arithmetic_min) {
             arithStr = number_min;
@@ -436,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             arithStr = number_div;
         }
         arithmetic = a;
-        numres.setText(numDoub1 + arithStr);
+        numres.setText(df.format(numDoub1)+ arithStr);
         checker = true;
     }
 
@@ -473,6 +483,29 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 arithmetic = 0;
             } else {
                 numDoub1 /= numDoub2;
+            }
+        }
+    }
+    private void numberButton(int a){
+        if (a != 0){
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10+a;
+                numres.setText(df.format(numDoub1));
+            }else {
+                numDoub2 = numDoub2 *10+a;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
+            }
+        }else {
+            if (!checker){//項の判定
+                numDoub1 = numDoub1 *10;
+                numres.setText(df.format(numDoub1));
+            }else {
+                numDoub2 = numDoub2 * 10;
+                String numStr1 = df.format(numDoub1);
+                String numStr2 = df.format(numDoub2);
+                numres.setText(connectSolution(numStr1, numStr2));
             }
         }
     }
