@@ -239,23 +239,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "+");
                 } else {
-                    if (arithmetic == 1) {
-                        numDoub1 += numDoub2;
-                    } else if (arithmetic == 2) {
-                        numDoub1 -= numDoub2;
-                    } else if (arithmetic == 3) {
-                        numDoub1 *= numDoub2;
-                    } else if (arithmetic == 4) {
-                        if (numDoub2 == 0) {
-                            numres.setText("Error");
-                            numDoub1 = 0;
-                            numDoub2 = 0;
-                            checker = false;
-                            arithmetic = 0;
-                        } else {
-                            numDoub1 /= numDoub2;
-                        }
-                    }
+//                    if (arithmetic == 1) {
+//                        numDoub1 += numDoub2;
+//                    } else if (arithmetic == 2) {
+//                        numDoub1 -= numDoub2;
+//                    } else if (arithmetic == 3) {
+//                        numDoub1 *= numDoub2;
+//                    } else if (arithmetic == 4) {
+//                        if (numDoub2 == 0) {
+//                            numres.setText("Error");
+//                            numDoub1 = 0;
+//                            numDoub2 = 0;
+//                            checker = false;
+//                            arithmetic = 0;
+//                        } else {
+//                            numDoub1 /= numDoub2;
+//                        }
+//                    }
+                    additionalCalculation();
                     arithmetic = 1;
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "+");
@@ -272,23 +273,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "-");
                 } else {
-                    if (arithmetic == 1) {
-                        numDoub1 += numDoub2;
-                    } else if (arithmetic == 2) {
-                        numDoub1 -= numDoub2;
-                    } else if (arithmetic == 3) {
-                        numDoub1 *= numDoub2;
-                    } else if (arithmetic == 4) {
-                        if (numDoub2 == 0) {
-                            numres.setText("Error");
-                            numDoub1 = 0;
-                            numDoub2 = 0;
-                            checker = false;
-                            arithmetic = 0;
-                        } else {
-                            numDoub1 /= numDoub2;
-                        }
-                    }
+//                    if (arithmetic == 1) {
+//                        numDoub1 += numDoub2;
+//                    } else if (arithmetic == 2) {
+//                        numDoub1 -= numDoub2;
+//                    } else if (arithmetic == 3) {
+//                        numDoub1 *= numDoub2;
+//                    } else if (arithmetic == 4) {
+//                        if (numDoub2 == 0) {
+//                            numres.setText("Error");
+//                            numDoub1 = 0;
+//                            numDoub2 = 0;
+//                            checker = false;
+//                            arithmetic = 0;
+//                        } else {
+//                            numDoub1 /= numDoub2;
+//                        }
+//                    }
+                    additionalCalculation();
                     arithmetic = 2;
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "-");
@@ -307,23 +309,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "*");
                 } else {
-                    if (arithmetic == 1) {
-                        numDoub1 += numDoub2;
-                    } else if (arithmetic == 2) {
-                        numDoub1 -= numDoub2;
-                    } else if (arithmetic == 3) {
-                        numDoub1 *= numDoub2;
-                    } else if (arithmetic == 4) {
-                        if (numDoub2 == 0) {
-                            numres.setText("Error");
-                            numDoub1 = 0;
-                            numDoub2 = 0;
-                            checker = false;
-                            arithmetic = 0;
-                        } else {
-                            numDoub1 /= numDoub2;
-                        }
-                    }
+//                    if (arithmetic == 1) {
+//                        numDoub1 += numDoub2;
+//                    } else if (arithmetic == 2) {
+//                        numDoub1 -= numDoub2;
+//                    } else if (arithmetic == 3) {
+//                        numDoub1 *= numDoub2;
+//                    } else if (arithmetic == 4) {
+//                        if (numDoub2 == 0) {
+//                            numres.setText("Error");
+//                            numDoub1 = 0;
+//                            numDoub2 = 0;
+//                            checker = false;
+//                            arithmetic = 0;
+//                        } else {
+//                            numDoub1 /= numDoub2;
+//                        }
+//                    }
+                    additionalCalculation();
                     arithmetic = 3;
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "*");
@@ -341,23 +344,24 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "/");
                 } else {
-                    if (arithmetic == 1) {
-                        numDoub1 += numDoub2;
-                    } else if (arithmetic == 2) {
-                        numDoub1 -= numDoub2;
-                    } else if (arithmetic == 3) {
-                        numDoub1 *= numDoub2;
-                    } else if (arithmetic == 4) {
-                        if (numDoub2 == 0) {
-                            numres.setText("Error");
-                            numDoub1 = 0;
-                            numDoub2 = 0;
-                            checker = false;
-                            arithmetic = 0;
-                        } else {
-                            numDoub1 /= numDoub2;
-                        }
-                    }
+//                    if (arithmetic == 1) {
+//                        numDoub1 += numDoub2;
+//                    } else if (arithmetic == 2) {
+//                        numDoub1 -= numDoub2;
+//                    } else if (arithmetic == 3) {
+//                        numDoub1 *= numDoub2;
+//                    } else if (arithmetic == 4) {
+//                        if (numDoub2 == 0) {
+//                            numres.setText("Error");
+//                            numDoub1 = 0;
+//                            numDoub2 = 0;
+//                            checker = false;
+//                            arithmetic = 0;
+//                        } else {
+//                            numDoub1 /= numDoub2;
+//                        }
+//                    }
+                    additionalCalculation();
                     arithmetic = 4;
                     numDoub2 = 0;
                     numres.setText(df.format(numDoub1) + "/");
@@ -449,5 +453,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             connectStr = number_div;
         }
         return numStr1 + connectStr + numStr2;
+    }
+
+
+    @SuppressLint("SetTextI18n")
+    private void additionalCalculation(){
+        if (arithmetic == 1) {
+            numDoub1 += numDoub2;
+        } else if (arithmetic == 2) {
+            numDoub1 -= numDoub2;
+        } else if (arithmetic == 3) {
+            numDoub1 *= numDoub2;
+        } else if (arithmetic == 4) {
+            if (numDoub2 == 0) {
+                numres.setText("Error");
+                numDoub1 = 0;
+                numDoub2 = 0;
+                checker = false;
+                arithmetic = 0;
+            } else {
+                numDoub1 /= numDoub2;
+            }
+        }
     }
 }
