@@ -155,15 +155,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 if (!checker) {
                     checker = true;
-                    arithmetic = 1;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "+");
                 } else {
                     additionalCalculation();
-                    arithmetic = 1;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "+");
                 }
+                arithmetic = 1;
+                numDoub2 = numDoub1;
+                numres.setText(df.format(numDoub1) + "+");
+                firstInput = false;
             }
             isNum(false);
         } else if (btnText.equals(number_min)) {
@@ -172,15 +170,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 if (!checker) {
                     checker = true;
-                    arithmetic = 2;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "-");
                 } else {
                     additionalCalculation();
-                    arithmetic = 2;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "-");
                 }
+                arithmetic = 2;
+                numDoub2 = numDoub1;
+                numres.setText(df.format(numDoub1) + "-");
+                firstInput = false;
             }
             isNum(false);
 
@@ -191,15 +187,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 if (!checker) {
                     checker = true;
-                    arithmetic = 3;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "*");
                 } else {
                     additionalCalculation();
-                    arithmetic = 3;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "*");
                 }
+                arithmetic = 3;
+                numDoub2 = numDoub1;
+                numres.setText(df.format(numDoub1) + "*");
+                firstInput = false;
             }
             isNum(false);
 
@@ -209,15 +203,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             } else {
                 if (!checker) {
                     checker = true;
-                    arithmetic = 4;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "/");
                 } else {
                     additionalCalculation();
-                    arithmetic = 4;
-                    numDoub2 = numDoub1;
-                    numres.setText(df.format(numDoub1) + "/");
                 }
+                arithmetic = 4;
+                numDoub2 = numDoub1;
+                numres.setText(df.format(numDoub1) + "/");
+                firstInput = false;
             }
             isNum(false);
 
@@ -225,15 +217,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             if(arithmetic == 1){
                 numDoub1 += numDoub2;
                 numres.setText(df.format(numDoub1));
-                numDoub2 = numDoub1;
+//                numDoub2 = numDoub1;
             } else if (arithmetic == 2) {
                 numDoub1 -= numDoub2;
                 numres.setText(df.format(numDoub1));
-                numDoub2 = numDoub1;
+//                numDoub2 = numDoub1;
             } else if (arithmetic == 3) {
                 numDoub1 *= numDoub2;
                 numres.setText(df.format(numDoub1));
-                numDoub2 = numDoub1;
+//                numDoub2 = numDoub1;
             }else if (arithmetic ==4){
                 if (numDoub2 == 0){
                     numres.setText("Error");
@@ -244,11 +236,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }else {
                     numDoub1 /= numDoub2;
                     numres.setText(df.format(numDoub1));
-                    numDoub2 = numDoub1;
+//                    numDoub2 = numDoub1;
                 }
             }else {
                 numres.setText(df.format(numDoub1));
-                numDoub2 = numDoub1;
+//                numDoub2 = numDoub1;
             }
             //arithmetic = 0;
             firstInput = false;
@@ -340,14 +332,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 numDoub1 = numDoub1 *10+a;
                 numres.setText(df.format(numDoub1));
             }else {
-                if (firstInput){
+                if (!firstInput){
+                    firstInput = true;
+                    numDoub2 = 0;
                     numDoub2 = numDoub2 *10+a;
                     String numStr1 = df.format(numDoub1);
                     String numStr2 = df.format(numDoub2);
                     numres.setText(connectSolution(numStr1, numStr2));
                 }else {
-                    firstInput = true;
-                    numDoub2 = 0;
                     numDoub2 = numDoub2 *10+a;
                     String numStr1 = df.format(numDoub1);
                     String numStr2 = df.format(numDoub2);
@@ -359,15 +351,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 numDoub1 = numDoub1 *10;
                 numres.setText(df.format(numDoub1));
             }else {
-                if (firstInput){
-                    numDoub2 = numDoub2 * 10;
+                if (!firstInput){
+                    firstInput = true;
+                    numDoub2 = 0;
+                    numDoub2 = numDoub2 *10;
                     String numStr1 = df.format(numDoub1);
                     String numStr2 = df.format(numDoub2);
                     numres.setText(connectSolution(numStr1, numStr2));
                 }else {
-                    firstInput = true;
-                    numDoub2 = 0;
-                    numDoub2 = numDoub2 * 10;
+                    numDoub2 = numDoub2 *10;
                     String numStr1 = df.format(numDoub1);
                     String numStr2 = df.format(numDoub2);
                     numres.setText(connectSolution(numStr1, numStr2));
