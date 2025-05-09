@@ -25,12 +25,12 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="90dp"
         android:layout_height="60dp"
-        android:layout_row="3"
+        android:layout_row="5"
         android:layout_column="0"
         android:background="#6A6A6A"
         android:text="@string/num_1"
-        android:textSize="20sp"
         android:textColorLink="#BCBCBC"
+        android:textSize="20sp"
         app:rippleColor="@color/black" />
 
     <Button
@@ -38,12 +38,12 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="90dp"
         android:layout_height="60dp"
-        android:layout_row="3"
+        android:layout_row="5"
         android:layout_column="1"
         android:background="#6A6A6A"
         android:text="@string/num_2"
-        android:textSize="20sp"
         android:textColorLink="#BCBCBC"
+        android:textSize="20sp"
         app:rippleColor="@color/black" />
 
     <Button
@@ -51,12 +51,12 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="90dp"
         android:layout_height="60dp"
-        android:layout_row="3"
+        android:layout_row="5"
         android:layout_column="2"
         android:background="#6A6A6A"
         android:text="@string/num_3"
-        android:textSize="20sp"
         android:textColorLink="#BCBCBC"
+        android:textSize="20sp"
         app:rippleColor="@color/black" />
 
     <Button
@@ -103,12 +103,12 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="90dp"
         android:layout_height="60dp"
-        android:layout_row="5"
+        android:layout_row="3"
         android:layout_column="0"
         android:background="#6A6A6A"
         android:text="@string/num_7"
-        android:textSize="20sp"
         android:textColorLink="#BCBCBC"
+        android:textSize="20sp"
         app:rippleColor="@color/black" />
 
     <Button
@@ -116,13 +116,13 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="90dp"
         android:layout_height="60dp"
-        android:layout_row="5"
+        android:layout_row="3"
         android:layout_column="1"
         android:background="#6A6A6A"
         android:text="@string/num_8"
-        android:textSize="20sp"
-
         android:textColorLink="#BCBCBC"
+
+        android:textSize="20sp"
         app:rippleColor="@color/black" />
 
     <Button
@@ -130,12 +130,12 @@
         style="@style/Widget.Material3.Button"
         android:layout_width="90dp"
         android:layout_height="60dp"
-        android:layout_row="5"
+        android:layout_row="3"
         android:layout_column="2"
         android:background="#6A6A6A"
         android:text="@string/num_9"
-        android:textSize="20sp"
         android:textColorLink="#BCBCBC"
+        android:textSize="20sp"
         app:rippleColor="@color/black" />
 
     <Button
