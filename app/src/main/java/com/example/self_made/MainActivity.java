@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private final String number_mul = "*";
     private final String number_div = "/";
     //テキスト出力
-    private TextView numres;
+    private TextView numRes;
     //計算式第一項
     private double numDoub1 = 0;
     //計算式第二項
@@ -56,8 +56,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             return insets;
         });
 
-        numres = findViewById(R.id.numLabel);
-        numres.setText(df.format(numDoub1));
+        numRes = findViewById(R.id.numLabel);
+        numRes.setText(df.format(numDoub1));
 
         Button num_1 = findViewById(R.id.numBtn1);
         Button num_2 = findViewById(R.id.numBtn2);
@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 arithmetic = arithmetic_add;
                 numDoub2 = numDoub1;
-                numres.setText(df.format(numDoub1) + "+");
+                numRes.setText(df.format(numDoub1) + "+");
                 firstInput = false;
             }
             isNum(false);
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 arithmetic = arithmetic_min;
                 numDoub2 = numDoub1;
-                numres.setText(df.format(numDoub1) + "-");
+                numRes.setText(df.format(numDoub1) + "-");
                 firstInput = false;
             }
             isNum(false);
@@ -196,7 +196,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 arithmetic = arithmetic_mul;
                 numDoub2 = numDoub1;
-                numres.setText(df.format(numDoub1) + "*");
+                numRes.setText(df.format(numDoub1) + "*");
                 firstInput = false;
             }
             isNum(false);
@@ -212,7 +212,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 }
                 arithmetic = arithmetic_div;
                 numDoub2 = numDoub1;
-                numres.setText(df.format(numDoub1) + "/");
+                numRes.setText(df.format(numDoub1) + "/");
                 firstInput = false;
             }
             isNum(false);
@@ -220,26 +220,26 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else if (btnText.equals(number_eq)) {
             if(arithmetic == arithmetic_add){
                 numDoub1 += numDoub2;
-                numres.setText(df.format(numDoub1));
+                numRes.setText(df.format(numDoub1));
             } else if (arithmetic == arithmetic_min) {
                 numDoub1 -= numDoub2;
-                numres.setText(df.format(numDoub1));
+                numRes.setText(df.format(numDoub1));
             } else if (arithmetic == arithmetic_mul) {
                 numDoub1 *= numDoub2;
-                numres.setText(df.format(numDoub1));
+                numRes.setText(df.format(numDoub1));
             }else if (arithmetic == arithmetic_div){
                 if (numDoub2 == 0){
-                    numres.setText("Error");
+                    numRes.setText("Error");
                     numDoub1 = 0;
                     numDoub2 = 0;
                     checker = false;
                     arithmetic = arithmetic_default;
                 }else {
                     numDoub1 /= numDoub2;
-                    numres.setText(df.format(numDoub1));
+                    numRes.setText(df.format(numDoub1));
                 }
             }else {
-                numres.setText(df.format(numDoub1));
+                numRes.setText(df.format(numDoub1));
             }
             firstInput = false;
             isNum(false);
@@ -250,7 +250,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             checker = false;
             firstInput = false;
             arithmetic = arithmetic_default;
-            numres.setText(df.format(numDoub1));
+            numRes.setText(df.format(numDoub1));
             isNum(false);
 
         }
@@ -280,7 +280,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             arithStr = number_div;
         }
         arithmetic = a;
-        numres.setText(df.format(numDoub1)+ arithStr);
+        numRes.setText(df.format(numDoub1)+ arithStr);
         checker = true;
     }
 
@@ -312,7 +312,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             numDoub1 *= numDoub2;
         } else if (arithmetic == arithmetic_div) {
             if (numDoub2 == 0) {
-                numres.setText("Error");
+                numRes.setText("Error");
                 numDoub1 = 0;
                 numDoub2 = 0;
                 checker = false;
@@ -327,7 +327,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void numberButton(int a){//名前を分かりやすく
         if (!checker){//項の判定
             numDoub1 = numDoub1 *10+a;
-            numres.setText(df.format(numDoub1));
+            numRes.setText(df.format(numDoub1));
         }else {
             if (!firstInput){
                 firstInput = true;
@@ -335,12 +335,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 numDoub2 = numDoub2 *10+a;
                 String numStr1 = df.format(numDoub1);
                 String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
+                numRes.setText(connectSolution(numStr1, numStr2));
             }else {
                 numDoub2 = numDoub2 *10+a;
                 String numStr1 = df.format(numDoub1);
                 String numStr2 = df.format(numDoub2);
-                numres.setText(connectSolution(numStr1, numStr2));
+                numRes.setText(connectSolution(numStr1, numStr2));
             }
         }
     }
